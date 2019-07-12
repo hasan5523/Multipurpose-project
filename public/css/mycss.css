@@ -1,0 +1,10 @@
+.edit_icon{
+    color:green;
+    font-size: 18px;
+}
+
+a.delete_icon {
+    color: red;
+    font-size: 20px;
+    margin-right: 5px;
+}

@@ -13,7 +13,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>AdminLTE 3 | Starter</title>
   <link type="text/css" rel="stylesheet" href="./css/app.css"> 
-  <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
+  <link type="text/css" rel="stylesheet" href="./css/mycss.css">
  
 </head>
 <body class="hold-transition sidebar-mini">
@@ -169,6 +169,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       
         
          <router-view></router-view>
+         <vue-progress-bar></vue-progress-bar>
         
         <!-- /.row -->
       

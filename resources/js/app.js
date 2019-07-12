@@ -7,10 +7,35 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import { Form, HasError, AlertError } from 'vform';
+window.Form = Form;
+import VueRouter from 'vue-router';
+import moment from 'moment';
+import VueProgressBar from 'vue-progressbar';
 
-import VueRouter from 'vue-router'
+Vue.component(HasError.name, HasError);
+Vue.component(AlertError.name, AlertError);
 
 Vue.use(VueRouter)
+
+const options = {
+  color: '#bffaf3',
+  failedColor: '#874b4b',
+  thickness: '5px',
+  transition: {
+    speed: '0.2s',
+    opacity: '0.6s',
+    termination: 300
+  },
+  autoRevert: true,
+  location: 'top',
+  inverse: false
+}
+
+Vue.use(VueProgressBar, options)
+
+
+
 
 // component path
 let routes = [
@@ -23,6 +48,14 @@ let routes = [
     mode: 'history',
     routes // short for `routes: routes`
   })
+
+Vue.filter('upText',function(text){
+  return text.charAt(0).toUpperCase() + text.slice(1);
+})
+
+Vue.filter('createdDate',function(){
+  return moment().format("MMM Do YY"); 
+})
 
 
 /**
