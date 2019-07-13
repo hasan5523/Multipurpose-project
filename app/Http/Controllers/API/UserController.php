@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Validation\Rule;
 class UserController extends Controller
 {
     /**
@@ -64,7 +64,16 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        $this->validate($request, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255'], //means escape this id~s email
+            'password' => ['sometimes',  'min:8']
+        ]);
+
+        $user->update($request->all());
+        
     }
 
     /**
@@ -75,6 +84,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+
+          $user->delete();
+
+         return ['mess' => 'ueddmfj'];
     }
 }

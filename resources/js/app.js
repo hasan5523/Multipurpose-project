@@ -13,10 +13,21 @@ import VueRouter from 'vue-router';
 import moment from 'moment';
 import VueProgressBar from 'vue-progressbar';
 
+import Swal from 'sweetalert2';
+window.Swal = require('sweetalert2');
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000
+});
+window.Toast = Toast;
+
+
 Vue.component(HasError.name, HasError);
 Vue.component(AlertError.name, AlertError);
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const options = {
   color: '#bffaf3',
@@ -34,7 +45,7 @@ const options = {
 
 Vue.use(VueProgressBar, options)
 
-
+window.Fire = new Vue();
 
 
 // component path
